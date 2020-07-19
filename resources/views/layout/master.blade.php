@@ -11,6 +11,11 @@
 </head>
 <body>
     <div class="container">
+        @if(auth()->check())
+        สวัสดีม {{auth()->user()->name}} | <a href="/logout">ออกจากระบบ</a>
+        @else
+        สวัสดีม บุคคลทั่วไป โปรด<a href="/login">เข้าสู้ระบบ</a>
+        @endif
         <header> <a href="/"> หน้าแรก </a> | <a href="/login"> login </a> | <a href="/create"> create </a></header>
     <hr>
     <div>

@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::where('user_id', auth()->user()->id)->paginate(5);
         $data = [
             'posts' => $posts
         ];
@@ -35,7 +35,7 @@ class HomeController extends Controller
         $detail = $request->input('detail');
         $category_id = $request->input('category_id');
         $post = new Post();
-        $post->user_id = 1;
+        $post->user_id = auth()->user()->id;
         $post->status = 0;
         $post->detail = $detail;
         $post->category_id = $category_id;

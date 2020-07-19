@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,16 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', "HomeController@index");
-Route::get('/login', "HomeController@login");
-Route::get('/create', "HomeController@create");
+Route::get('/', "HomeController@index")->middleware("auth");
+//Route::get('/login', "HomeController@login");
+Route::get('/create', "HomeController@create")->middleware("auth");
+Route::post('/store', "HomeController@store")->middleware("auth");
+Route::get('/delete/{id}', "HomeController@delete")->middleware("auth");
 
-Route::post('/store', "HomeController@store");
-Route::get('/delete/{id}', "HomeController@delete");
+Auth::routes();
+
+
+Route::get("/logout", function(){
+    Auth::logout();
+    return redirect("login");
+});
