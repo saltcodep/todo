@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,7 +13,11 @@ class HomeController extends Controller
     }
     public function create()
     {
-        return view('create');
+        $categories = Category::all();
+        $data = [
+            'categories' => $categories
+        ];
+        return view('create', $data);
     }
 
     public function login()
