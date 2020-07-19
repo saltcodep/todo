@@ -10,34 +10,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function contact()
-    {
-        return view('contact');
-    }
-
-    public function about()
-    {
-        return view('about');
-    }
-
-    public function show($id)
-    {
-    }
-
     public function create()
     {
+        return view('create');
     }
 
-    public function store()
+    public function login()
     {
-    }
-
-    public function update($id)
-    {
-    }
-
-    public function delete($id)
-    {
+        return view('login');
     }
 }
